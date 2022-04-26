@@ -19,9 +19,10 @@ Obviamente, o prêmio dado a cada apostador é o máximo possível de acordo com
 int main(){
 //vou dividir os numeros
 int numN; 
-int numSorte = 12399;
+int numSorte = 12300;
 float vAposta;
 float valorTotal=0;
+int zero = 10*0;
 
 printf("Insira um número entre 0 e 99999\n");
 scanf("%i", &numN);
@@ -35,18 +36,20 @@ int numDez = (numN%100)/10;
 int numUni = numN%10;
 
 int sorteMil =(numSorte/1000)%10;
-int sorteCem=(numSorte/1000)/100;
+int sorteCem=(numSorte%1000)/100;
 int sorteDez=(numSorte%100)/10;
 int sorteUni=numSorte%10;
 
 //variável para comparar os ultimos digitos dos grupos de animais
 int numFinal= (numDez*10)+numUni;
 int sorteFinal = (sorteDez*10)+sorteUni;
+
+//se sorte final for igual 00 99, 98, 97 e num final == 00 99 98 
  
 if (numMil==sorteMil && numCem==sorteCem && numDez==sorteDez && numUni==sorteUni )
 {
     valorTotal = vAposta*3000;
-    printf("%.2f", valorTotal );
+    printf("%.2f", valorTotal);
 }
 else if(numCem==sorteCem && numDez==sorteDez && numUni==sorteUni){
     valorTotal = vAposta*500;
@@ -56,7 +59,7 @@ else if(numDez==sorteDez && numUni==sorteUni){
     valorTotal = vAposta*50;
     printf("%.2f ", valorTotal );
 }
-else if((sorteFinal == 0 || sorteFinal==97 || sorteFinal==98 || sorteFinal == 99) && sorteFinal==numFinal){
+else if((numFinal == 00 || numFinal==97 || numFinal==98 || numFinal == 99) && (numFinal== 00 || numFinal== 99 || numFinal == 98 || numFinal== 97)){
     valorTotal = vAposta*16;
     printf("%.2f ", valorTotal );
 }
